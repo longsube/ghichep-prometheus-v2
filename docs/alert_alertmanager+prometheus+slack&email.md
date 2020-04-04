@@ -1,9 +1,9 @@
 # Hướng dẫn cài đặt gửi cảnh báo khi có alert trên Prometheus
 
 ## Giải pháp:
- - Prometheus để lưu trữ metric và thiết lập cảnh báo
+ - Prometheus để lưu trữ metric và thiết lập cảnh báo.
  - Alermanager để gửi cảnh bảo tới email, các OTT hỗ trợ Webhooks như Slack, Telegram,...
- - Email hoặc Slack để nhận cảnh báo
+ - Email, Slack, Telegram để nhận cảnh báo.
 
 
 ## Mô hình lab:
@@ -154,10 +154,10 @@ Trong đó:
 #### 5.2.1. Cài đặt Telegram Bot. Thực hiện theo [hướng dẫn](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-telegram?view=azure-bot-service-4.0)
 ![prometheus_6](../images/prometheus_6.png)
 
-#### Lưu lại telegramBotToken và telegramChatID. Cách lấy telegramChatID theo [hướng dẫn](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id)
+*Lưu lại telegramBotToken và telegramChatID. Cách lấy telegramChatID theo [hướng dẫn](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id)*
 
 #### 5.2.2. Cài đặt Webhook để Telegram Bot gửi cảnh báo. Thực hiện theo [hướng dẫn](https://github.com/longsube/alertmanager-webhook-telegram#running-on-docker)
-#### Lưu ý: các trường `bottoken, chatid, username, password` phải khai báo trùng với thông tin khi tạo Telegram Bot và tạo `alertmanager.yml`
+*Lưu ý: các trường `bottoken, chatid, username, password` phải khai báo trùng với thông tin khi tạo Telegram Bot và tạo `alertmanager.yml`*
 
 ## 6. Thử nghiệm việc gửi cảnh báo 
 ### 6.1. Tắt tạm thời node-exporter trên host vật lý, sau đó truy cập vào địa chỉ `10.159.19.84:9090` để vào giao diện của Prometheus, xuất hiện cảnh báo node down
