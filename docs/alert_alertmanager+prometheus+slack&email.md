@@ -18,6 +18,7 @@
 ### 2.1. Cài đặt Prometheus theo [hướng dẫn](https://github.com/longsube/ghichep-prometheus-v2/blob/master/docs/install_prometheus_container.md)
 
 ### 2.2. Tạo file cấu hình `host_alert.rules.yml` chứa các rule cảnh báo
+#### Trong bài lab này, nếu node-exporter trên host không hoạt động trong 1p, Prometheus sẽ đánh giá host down và gửi cảnh báo.
 ```sh
 groups:
 - name: Hardware alerts
@@ -31,7 +32,7 @@ groups:
       title: Node {{ $labels.instance }} is down
       description: Failed to scrape {{ $labels.job }} on {{ $labels.instance }} for more than 1 minutes. Node seems down.
 ```
-Nội dung: nếu node-exporter trên host không hoạt động trong 1p, Prometheus sẽ đánh giá host down và gửi cảnh báo.
+
 
 ### 2.3. Chỉnh sửa file `prometheus.yml` để thêm cấu hình cảnh báo
 ```sh
