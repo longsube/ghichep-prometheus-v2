@@ -152,7 +152,7 @@ Trong đó:
 
 ### 5.2. Cấu hình Webhooks cho Telegram nhận cảnh báo.
 #### 5.2.1. Cài đặt Telegram Bot. Thực hiện theo [hướng dẫn](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-telegram?view=azure-bot-service-4.0)
-![prometheus_6](../images/prometheus_6.png)
+![prometheus_7](../images/prometheus_7.png)
 
 *Lưu lại telegramBotToken và telegramChatID. Cách lấy telegramChatID theo [hướng dẫn](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id)*
 
