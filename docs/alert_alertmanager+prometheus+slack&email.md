@@ -138,28 +138,25 @@ Trong đó:
 #### Truy cập vào địa chỉ `10.159.19.84:9093` để vào giao diện của Alertmanager. Trong `Status` đã có cấu hình cảnh báo
 ![prometheus_3](../images/prometheus_3.png)
 
-## 5. Thử nghiệm việc gửi cảnh báo 
-### 5.1. Tắt tạm thời node-exporter trên host vật lý, sau đó truy cập vào địa chỉ `10.159.19.84:9090` để vào giao diện của Prometheus, xuất hiện cảnh báo node down
+### 5. Cấu hình Webhooks cho Slack để nhận cảnh báo
+### 5.1. Thực hiện theo [hướng dẫn](https://github.com/longsube/ghichep-OpenStack/blob/master/08-Ceilometer/operation/proxy_alarm_slack.md#2-c%E1%BA%A5u-h%C3%ACnh-slack)
+
+## 6. Thử nghiệm việc gửi cảnh báo 
+### 6.1. Tắt tạm thời node-exporter trên host vật lý, sau đó truy cập vào địa chỉ `10.159.19.84:9090` để vào giao diện của Prometheus, xuất hiện cảnh báo node down
 ![prometheus_4](../images/prometheus_4.png)
 
-### 5.2. Trên Alertmanager xuất hiện trigger để gửi cảnh báo
+### 6.2. Trên Alertmanager xuất hiện trigger để gửi cảnh báo
 ![prometheus_5](../images/prometheus_5.png)
 
-### 5.3. Kiểm tra email và Slack đã thấy có cảnh báo gửi về
+### 6.3. Kiểm tra email và Slack đã thấy có cảnh báo gửi về
 ![prometheus_6](../images/prometheus_6.png)
 
 ## Tham khảo:
 
-[1] - https://medium.com/@abhishekbhardwaj510/alertmanager-integration-in-prometheus-197e03bfabdf
-
-[2] - https://blog.ruanbekker.com/blog/2019/05/17/install-alertmanager-to-alert-based-on-metrics-from-prometheus/
-
-[3] - https://hub.docker.com/r/prom/alertmanager/
-
-[4] - https://github.com/prometheus/alertmanager/blob/master/template/default.tmpl
-
-[5] - https://prometheus.io/docs/alerting/configuration/#email-receiver-
-
-[6] - https://www.robustperception.io/alerting-on-down-instances
-
-[7] - https://alex.dzyoba.com/blog/prometheus-alerts/
+- https://medium.com/@abhishekbhardwaj510/alertmanager-integration-in-prometheus-197e03bfabdf
+- https://blog.ruanbekker.com/blog/2019/05/17/install-alertmanager-to-alert-based-on-metrics-from-prometheus/
+- https://hub.docker.com/r/prom/alertmanager/
+- https://github.com/prometheus/alertmanager/blob/master/template/default.tmpl
+- https://prometheus.io/docs/alerting/configuration/#email-receiver-
+- https://www.robustperception.io/alerting-on-down-instances
+- https://alex.dzyoba.com/blog/prometheus-alerts/
