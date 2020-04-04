@@ -2,7 +2,7 @@
 
 ## Giải pháp:
  - Prometheus để lưu trữ metric và thiết lập cảnh báo
- - Alermanager để gửi cảnh bảo tới email, các OTT hỗ trợ Webhooks như Slack, Hipchat,...
+ - Alermanager để gửi cảnh bảo tới email, các OTT hỗ trợ Webhooks như Slack, Telegram,...
  - Email hoặc Slack để nhận cảnh báo
 
 
@@ -75,7 +75,7 @@ cd alertmanager
 vim alertmanager.yml
 ```
 
-#### Nội dung file cấu hình
+#### Nội dung file cấu hình để gửi cảnh báo tới email, Slack, Telegram
 ```sh
 global:
   slack_api_url: 'https://hooks.slack.com/services/xxx/xxx'
@@ -113,6 +113,14 @@ receivers:
     channel: 'test-webhooks'
     username: 'incoming-webhook'
     icon_emoji: ':joy:'
+  webhook_configs:
+  - url: 'http://10.159.19.84:9119/alert'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'longlq'
+        password: '123456'
+
 ```
 
 #### Chú ý: 
@@ -139,8 +147,17 @@ Trong đó:
 #### Truy cập vào địa chỉ `10.159.19.84:9093` để vào giao diện của Alertmanager. Trong `Status` đã có cấu hình cảnh báo
 ![prometheus_3](../images/prometheus_3.png)
 
-### 5. Cấu hình Webhooks cho Slack để nhận cảnh báo
-### 5.1. Thực hiện theo [hướng dẫn](https://github.com/longsube/ghichep-OpenStack/blob/master/08-Ceilometer/operation/proxy_alarm_slack.md#2-c%E1%BA%A5u-h%C3%ACnh-slack)
+### 5. Cấu hình nhận cảnh báo cho các ứng dụng OTT 
+### 5.1. Cấu hình Webhooks cho Slack để nhận cảnh báo. Thực hiện theo [hướng dẫn](https://github.com/longsube/ghichep-OpenStack/blob/master/08-Ceilometer/operation/proxy_alarm_slack.md#2-c%E1%BA%A5u-h%C3%ACnh-slack)
+
+### 5.2. Cấu hình Webhooks cho Telegram nhận cảnh báo.
+#### 5.2.1. Cài đặt Telegram Bot. Thực hiện theo [hướng dẫn](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-telegram?view=azure-bot-service-4.0)
+![prometheus_6](../images/prometheus_6.png)
+
+#### Lưu lại telegramBotToken và telegramChatID. Cách lấy telegramChatID theo [hướng dẫn](https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id)
+
+#### 5.2.2. Cài đặt Webhook để Telegram Bot gửi cảnh báo. Thực hiện theo [hướng dẫn](https://github.com/longsube/alertmanager-webhook-telegram#running-on-docker)
+#### Lưu ý: các trường `bottoken, chatid, username, password` phải khai báo trùng với thông tin khi tạo Telegram Bot và tạo `alertmanager.yml`
 
 ## 6. Thử nghiệm việc gửi cảnh báo 
 ### 6.1. Tắt tạm thời node-exporter trên host vật lý, sau đó truy cập vào địa chỉ `10.159.19.84:9090` để vào giao diện của Prometheus, xuất hiện cảnh báo node down
@@ -152,6 +169,9 @@ Trong đó:
 ### 6.3. Kiểm tra email và Slack đã thấy có cảnh báo gửi về
 ![prometheus_6](../images/prometheus_6.png)
 
+### 6.4. Trên Telegram đã thấy có cảnh báo gửi về
+![prometheus_8](../images/prometheus_8.png)
+
 ## Tham khảo:
 
 - https://medium.com/@abhishekbhardwaj510/alertmanager-integration-in-prometheus-197e03bfabdf
@@ -161,3 +181,4 @@ Trong đó:
 - https://prometheus.io/docs/alerting/configuration/#email-receiver-
 - https://www.robustperception.io/alerting-on-down-instances
 - https://alex.dzyoba.com/blog/prometheus-alerts/
+- https://github.com/nopp/alertmanager-webhook-telegram
