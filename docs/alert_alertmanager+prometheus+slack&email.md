@@ -154,6 +154,12 @@ Trong đó:
 
 [2] - https://blog.ruanbekker.com/blog/2019/05/17/install-alertmanager-to-alert-based-on-metrics-from-prometheus/
 
-[3]- https://hub.docker.com/r/prom/alertmanager/
+[3] - https://hub.docker.com/r/prom/alertmanager/
 
 [4] - https://github.com/prometheus/alertmanager/blob/master/template/default.tmpl
+
+[5] - https://prometheus.io/docs/alerting/configuration/#email-receiver-
+
+[6] - https://www.robustperception.io/alerting-on-down-instances
+
+[7] - https://alex.dzyoba.com/blog/prometheus-alerts/
