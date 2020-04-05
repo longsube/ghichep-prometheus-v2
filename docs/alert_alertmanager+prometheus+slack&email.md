@@ -50,9 +50,10 @@ alerting:
 ### 2.4. Khởi tạo lại container Prometheus để nhận cấu hình mới
 ```sh
 docker run -d --name prometheus -p 9090:9090 \
--v /root/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
--v /root/prometheus/host_alert.rules.yml:/etc/prometheus/host_alert.rules.yml \
-prom/prometheus  --config.file=/etc/prometheus/prometheus.yml
+-v /home/sysadmin/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+-v /home/sysadmin/prometheus/host_alert.rules.yml:/etc/prometheus/host_alert.rules.yml \
+-v promql:/prometheus \
+prom/prometheus --config.file=/etc/prometheus/prometheus.yml
 ```
 Trong đó:
 

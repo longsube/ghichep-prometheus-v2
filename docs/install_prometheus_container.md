@@ -54,7 +54,10 @@ scrape_configs:
 
 ### 4. Khởi tạo container Prometheus
 ```sh
-docker run -d --name prometheus -p 9090:9090 -v /root/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus --config.file=/etc/prometheus/prometheus.yml
+docker run -d --name prometheus -p 9090:9090 \
+-v /home/sysadmin/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+-v promql:/prometheus \
+prom/prometheus --config.file=/etc/prometheus/prometheus.yml
 ```
 
 Trong đó:
