@@ -49,7 +49,7 @@ alerting:
 
 ### 2.4. Khởi tạo lại container Prometheus để nhận cấu hình mới
 ```sh
-docker run -d --name prometheus -p 9090:9090 \
+docker run --restart=always -d --name prometheus -p 9090:9090 \
 -v /home/sysadmin/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
 -v /home/sysadmin/prometheus/host_alert.rules.yml:/etc/prometheus/host_alert.rules.yml \
 -v promql:/prometheus \
@@ -135,7 +135,7 @@ wget https://raw.githubusercontent.com/prometheus/alertmanager/master/template/d
 
 ### 3.4. Khởi tạo container Alertmanager
 ```sh
-docker run -d --name alertmanager -p 9093:9093 \
+docker run --restart=always -d --name alertmanager -p 9093:9093 \
 -v /root/alertmanager/alertmanager.yml:/alertmanager.yml \
 -v /root/alertmanager/default.tmpl:/default.tmpl \
 prom/alertmanager --config.file=/alertmanager.yml
