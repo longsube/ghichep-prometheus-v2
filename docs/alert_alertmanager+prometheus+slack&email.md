@@ -159,6 +159,14 @@ Trong đó:
 
 #### 5.2.2. Cài đặt Webhook để Telegram Bot gửi cảnh báo. Thực hiện theo [hướng dẫn](https://github.com/longsube/alertmanager-webhook-telegram#running-on-docker)
 *Lưu ý: các trường `bottoken, chatid, username, password` phải khai báo trùng với thông tin khi tạo Telegram Bot và tạo `alertmanager.yml`*
+```sh
+docker run --restart=always -d --name telegram-bot \
+  -e "bottoken=1187577390:AAGlm4g4WzhjYu8uad3IM3RoX6zvYYKnANk" \
+  -e "chatid=-1001226002109" \
+  -e "username=longlq" \
+  -e "password=123456" \
+  -p 9119:9119 longsube/alertmanager-webhook-telegram:1.0
+```
 
 ## 6. Thử nghiệm việc gửi cảnh báo 
 ### 6.1. Tắt tạm thời node-exporter trên host vật lý, sau đó truy cập vào địa chỉ `10.159.19.84:9090` để vào giao diện của Prometheus, xuất hiện cảnh báo node down
